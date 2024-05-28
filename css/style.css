@@ -58,6 +58,10 @@ section p {
     animation: fade-in 1s ease-in-out;
 }
 
+.section:hover {
+  background-color: #000000; /* Cambia este valor por el color de fondo que deseas para el hover */
+}
+
 footer {
     background-color: #363333;
     color: #ffffff;
@@ -285,4 +289,4 @@ footer p {
     }
 }
 
-   
+    
