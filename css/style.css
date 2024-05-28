@@ -1,14 +1,24 @@
-/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
     background-color: #333;
     color: #fff;
-    padding: 10px;
+    padding: 20px;
+    animation: fade-in 1s ease-in-out;
+    text-align: center;
 }
 
 nav ul {
@@ -29,6 +39,7 @@ nav ul li a {
 
 main {
     padding: 20px;
+    flex: 1;
 }
 
 section {
@@ -36,13 +47,15 @@ section {
 }
 
 section h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 2.4vw;
+    margin-bottom: 1.0vw;
+    animation: fade-in 1s ease-in-out;
 }
 
 section p {
-    font-size: 16px;
+    font-size: 1.6vw;
     line-height: 1.5;
+    animation: fade-in 1s ease-in-out;
 }
 
 footer {
@@ -60,89 +73,65 @@ footer p {
 
 #electronics, #gaming, #anime, #domotica {
     margin-bottom: 40px;
+    animation: slide-in-right 1s ease-in-out;
+}
+
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 #electronics h2, #gaming h2, #anime h2, #domotica h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 2.4vw;
+    margin-bottom: 1.0vw;
+    animation: fade-in 1s ease-in-out;
 }
 
 #electronics p, #gaming p, #anime p, #domotica p {
-    font-size: 16px;
+    font-size: 1.6vw;
     line-height: 1.5;
+    animation: fade-in 1s ease-in-out;
 }
 
 #electronics a, #gaming a, #anime a, #domotica a {
     background-color: #333;
     color: #fff;
-    padding: 10px 20px;
+    padding: 1.0vw 2.0vw;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 0.5vw;
+    animation: pulse 1s ease-in-out infinite;
 }
 
-
-
-
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+    grid-gap: 2.0vw;
+    animation: fade-in 1s ease-in-out;
 }
 
-.product-grid img {
-    width: 100%;
-    height: auto;
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
-.product-grid .product {
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-
-.product-grid .product h3 {
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.product-grid .product p {
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.product-grid .product a {
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    text-decoration: none;
-}
-
-#hero {
-    background-image: url('hero-image.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-#hero h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-}
-
-#hero p {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-#hero a {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-}
+   
