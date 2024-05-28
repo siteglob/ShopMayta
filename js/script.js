@@ -39,6 +39,7 @@ document.querySelectorAll("a").forEach(function(link) {
             block: "start"
         });
     });
+
 });
 
 // Agregar animación de desplazamiento suave al hacer clic en los enlaces internos
@@ -51,3 +52,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
