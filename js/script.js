@@ -53,3 +53,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+
+
+
+const cart = document.getElementById('cart');
+const total = document.getElementById('total');
+const purchase = document.getElementById('purchase');
+const products = document.getElementById('products');
+const showProducts = document.getElementById('show-products');
+const hideProducts = document.getElementById('hide-products');
+const productsContainer = document.getElementById('products-container');
+
+purchase.addEventListener('click', () => {
+    cart.innerHTML = 'Carrito de compras';
+    total.innerHTML = 'Total: $0';
+});
+
+
+

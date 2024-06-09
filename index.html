@@ -12,9 +12,9 @@
 <body>
     <header>
 
-        <h1>QueruBusiness</h1>
+        <h1></h1>
         
-        <a href="index.html"><img src="img/" alt="Logo"></a>
+        <a href="index.html"><img src="img/tetraedro (2).png" alt="Logo"></a>
         <i class="fas fa-shopping-cart"></i>
 
 
@@ -38,10 +38,25 @@
 
     </header>
 
+        <script>
+
+            const cart = document.getElementById('cart');
+            const total = document.getElementById('total');
+            const purchase = document.getElementById('purchase');
+            const products = document.getElementById('products');
+            const showProducts = document.getElementById('show-products');
+            const hideProducts = document.getElementById('hide-products');
+            const productsContainer = document.getElementById('products-container');
+
+            purchase.addEventListener('click', () => {
+                cart.innerHTML = 'Carrito de compras';
+                total.innerHTML = 'Total: $0';
+            });
+        </script>
+
     <main>
         <section id="hero">
-            <h1>Bienvenido a tu tienda</h1>
-            <p>Encuentra todo lo que necesitas para tu hogar, estilo gammer y anime.</p>
+                    <p>Encuentra todo lo que necesitas para tu hogar, encunetra gammer y anime.</p>
             <a href="#electronics">Ver productos</a>
         </section>
 
