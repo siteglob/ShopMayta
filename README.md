@@ -1,2 +1,2 @@
-# youshop
+# shopping 
 Tu tienda en TikTok
