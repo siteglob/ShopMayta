@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - ShopMayta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: var(--light-bg);
+            padding-top: 2rem;
+        }
+
+        .checkout-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .order-summary {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #ddd;
+        }
+
+        .form-section {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="checkout-container">
+        <div class="checkout-header">
+            <h2>Finalizar Compra</h2>
+            <p>Confirma tus datos para generar el pedido</p>
+        </div>
+
+        <div class="order-summary" id="summary-container">
+            <h3>Resumen del Pedido</h3>
+            <div id="items-list">
+                <!-- Items injected by JS -->
+            </div>
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="checkout-total">$0.00</span>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>Tus Datos</h3>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="name">Nombre Completo:</label>
+                    <input type="text" id="name" required placeholder="Ej: Juan Pérez">
+                </div>
+                <div class="form-group">
+                    <label for="contact">WhatsApp o Teléfono:</label>
+                    <input type="text" id="contact" required placeholder="Ej: 0991234567">
+                </div>
+
+                <div class="form-group" style="margin-top: 2rem;">
+                    <button type="submit" class="btn-primary" id="confirm-btn">
+                        <i class="fab fa-whatsapp"></i> Confirmar y Enviar a WhatsApp
+                    </button>
+                    <a href="index.html"
+                        style="display: block; text-align: center; margin-top: 1rem; color: #666;">Volver a la
+                        tienda</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Load Data
+        const cart = JSON.parse(localStorage.getItem('cartTemp')) || [];
+        const user = JSON.parse(localStorage.getItem('shopUser'));
+
+        if (cart.length === 0) {
+            alert('No hay productos en el carrito');
+            window.location.href = 'index.html';
+        }
+
+        // Render Summary
+        const list = document.getElementById('items-list');
+        let total = 0;
+
+        cart.forEach(item => {
+            total += item.price;
+            list.innerHTML += `
+                <div class="order-item">
+                    <span>${item.name}</span>
+                    <span>$${item.price.toFixed(2)}</span>
+                </div>
+            `;
+        });
+        document.getElementById('checkout-total').innerText = `$${total.toFixed(2)}`;
+
+        // Pre-fill User
+        if (user) {
+            document.getElementById('name').value = user.name;
+            document.getElementById('contact').value = user.contact;
+        }
+
+        // Handle Submit
+        document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            const updatedUser = { name, contact };
+
+            // Save locally
+            localStorage.setItem('shopUser', JSON.stringify(updatedUser));
+
+            // Disable button
+            const btn = document.getElementById('confirm-btn');
+            btn.innerHTML = 'Procesando...';
+            btn.disabled = true;
+
+            try {
+                // 1. Save to Database (API Call)
+                const response = await fetch('/api/order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        user: updatedUser,
+                        items: cart,
+                        total: total
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // 2. Redirect to WhatsApp
+                    const itemsList = cart.map(item => `- ${item.name} ($${item.price.toFixed(2)})`).join('\n');
+                    const message = `*Hola ShopMayta, Nuevo Pedido #${result.orderId}:* 🛒\n\n${itemsList}\n\n*Total: $${total.toFixed(2)}*\n\n*Cliente:*\n👤 ${name}\n📱 ${contact}`;
+
+                    const url = `https://wa.me/593963106343?text=${encodeURIComponent(message)}`;
+
+                    // Clear cart
+                    localStorage.removeItem('cartTemp'); // Clear temp cart
+
+                    window.location.href = url;
+                } else {
+                    alert('Error guardando pedido: ' + result.error);
+                    btn.disabled = false;
+                    btn.innerHTML = 'Intentar de nuevo';
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Error de conexión con el servidor');
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>

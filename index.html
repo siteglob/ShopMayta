@@ -1,233 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Queru
-    </title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />    
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="img" href="">
+    <title>ShopMayta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="img" href="">
 </head>
+
 <body>
     <header>
-
-        <h1></h1>
-        
-        <a href="index.html"><img src="img/tetraedro (2).png" alt="Logo"></a>
-        <i class="fas fa-shopping-cart"></i>
-
-
+        <div class="logo-container">
+            <a href="index.html"
+                style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; text-decoration: none; font-weight: 700; display: flex; align-items: center;">
+                <img src="img/tetraedro (2).png" alt="ShopMayta Logo" style="height: 40px; margin-right: 10px;">
+                ShopMayta
+            </a>
+        </div>
 
         <nav>
             <ul>
                 <li><a href="#hero">Inicio</a></li>
                 <li><a href="#electronics">Electrónica</a></li>
-                <li><a href="#gaming">Gamming</a></li>
-                <li><a href="#moda-anime">Moda Anime</a></li>
+                <li><a href="#gaming">Gaming</a></li>
+                <li><a href="#moda-anime">Anime</a></li>
                 <li><a href="#domotica">Domótica</a></li>
             </ul>
         </nav>
-        <div class="social-icons">
-            <a href="https://wa.me/0963106343"><img src="images/whatsapp.png" alt="WhatsApp"></a>
-            <a href="https://www.facebook.com/example"><img src="images/facebook.png" alt="Facebook"></a>
-            <a href="https://www.instagram.com/example"><img src="images/instagram.png" alt="Instagram"></a>
-            <a href="https://www.tiktok.com/@example"><img src="images/tiktok.png" alt="TikTok"></a>
+
+        <div class="header-actions" style="display: flex; align-items: center; gap: 1rem;">
+            <div class="social-icons">
+                <a href="https://wa.me/0963106343"><img
+                        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+            </div>
+            <i class="fas fa-shopping-cart" id="cart-icon"
+                style="font-size: 1.2rem; cursor: pointer; color: white;"></i>
         </div>
-
-
     </header>
 
-        <script>
 
-            const cart = document.getElementById('cart');
-            const total = document.getElementById('total');
-            const purchase = document.getElementById('purchase');
-            const products = document.getElementById('products');
-            const showProducts = document.getElementById('show-products');
-            const hideProducts = document.getElementById('hide-products');
-            const productsContainer = document.getElementById('products-container');
-
-            purchase.addEventListener('click', () => {
-                cart.innerHTML = 'Carrito de compras';
-                total.innerHTML = 'Total: $0';
-            });
-        </script>
 
     <main>
         <section id="hero">
-                    <p>Encuentra todo lo que necesitas para tu hogar, encunetra gammer y anime.</p>
-            <a href="#electronics">Ver productos</a>
+            <h1>Bienvenido a ShopMayta</h1>
+            <p>Descubre lo último en tecnología, gaming y moda anime. Calidad y estilo en un solo lugar.</p>
+            <a href="#electronics">Explorar Catálogo</a>
         </section>
 
         <section id="electronics">
             <h2>Electrónica</h2>
-            <div class="product-grid">
-                <!-- Aquí puedes agregar tus productos electrónicos -->
-
-                <div class="product-card">
-                    <img src="itemelec/foco cam.jpg" alt="Producto 1">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $19.99</p>
-                    <button>Añadir al carrito</button>
-                </div>
-
-             
-
-
-                <div class="product-card">
-                    <img src="itemelec/doble cam.jpg" alt="Producto 2">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $49.99</p>
-                    <button>Añadir al carrito</button>
-                </div>
-
-                <div class="product-card">
-                    <img src="itemelec/pc.jpg" alt="Producto 3">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $79.99</p>
-                    <button>Añadir al carrito</button>
-                </div>
-
+            <div class="product-grid" id="grid-electronics">
+                <!-- Products will be loaded dynamically -->
             </div>
         </section>
 
         <section id="gaming">
-            <h2>Gamming</h2>
-            <div class="product-grid">
-                <!-- Aquí puedes agregar tus productos de gamming -->
-                <div class="product-card">
-                    <img src="itemgaming/rubia shopp.jpg" alt="Producto 1">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $29.99</p>
-                    <button>Añadir al carrito</button>
-                    
-                </div>
-                <div class="product-card">
-                    <img src="itemgaming/carritocel.jpg" alt="Producto 1">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $29.99</p>
-                    <button>Añadir al carrito</button>
-                    
-                </div>
-                <div class="product-card">
-                    <img src="itemgaming/rubia shopp.jpg" alt="Producto 1">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $29.99</p>
-                    <button>Añadir al carrito</button>
-                    
-                </div>
+            <h2>Gaming</h2>
+            <div class="product-grid" id="grid-gaming">
+                <!-- Products will be loaded dynamically -->
             </div>
-
         </section>
 
         <section id="moda-anime">
             <h2>Moda Anime</h2>
-            <div class="product-grid">
-
-                <div class="product-card">
-                    <img src="itemanime/onlineshop.jpg" alt="Producto 1">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $29.99</p>
-                    <button>Añadir al carrito</button>
-                    
-                </div>
-
-                <div class="product-card">
-                    <img src="itemanime/pngwing.com (1).png" alt="Producto 1">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $29.99</p>
-                    <button>Añadir al carrito</button>
-                    
-                </div>
-
-                <div class="product-card">
-                    <img src="itemanime/thank you.jpg" alt="Producto 1">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $29.99</p>
-                    <button>Añadir al carrito</button>
-                    
-                </div>
-                <!-- Aquí puedes agregar tus productos de moda anime -->
-
+            <div class="product-grid" id="grid-anime">
+                <!-- Products will be loaded dynamically -->
             </div>
         </section>
 
         <section id="domotica">
-            <h2>Domotica</h2>
-            <div class="product-grid">
-                <!-- Aquí puedes agregar tus productos de domotica -->
-                <div class="product-card">
-                    <img src="itemdomotica/smart door.jpg" alt="Producto 1">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $29.99</p>
-                    <button>Añadir al carrito</button>
-                    
-                </div>
-                <div class="product-card">
-                    <img src="itemdomotica/tri cam.jpg" alt="Producto 1">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $29.99</p>
-                    <button>Añadir al carrito</button>
-                    
-                </div>
-
-                <div class="product-card">
-                    <img src="itemdomotica/smart door.jpg" alt="Producto 1">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $29.99</p>
-                    <button>Añadir al carrito</button>
-                    
-                </div>
-
-                <div class="product-card">
-                    <img src="itemdomotica/tri cam.jpg" alt="Producto 1">
-                    <h3>Nombre del producto</h3>
-                    <p>Precio: $29.99</p>
-                    <button>Añadir al carrito</button>
-                    
-                </div>
-
-
+            <h2>Domótica</h2>
+            <div class="product-grid" id="grid-domotica">
+                <!-- Products will be loaded dynamically -->
             </div>
-
         </section>
 
 
 
- 
+
 
 
         <aside>
-
-            <h3>Carrito de compras</h3>
-
-            <div id="cart">
-
+            <div class="cart-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3>Carrito de compras</h3>
+                <button id="hide-products"
+                    style="background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-color);">&times;</button>
             </div>
 
-            <div id="total">
-
-                <p>Total: $0</p>
-
-                <button id="purchase">Comprar</button>
-
-            </div>
-
-            <div id="products">
-
+            <div id="products-container">
+                <!-- Cart items will be rendered here -->
                 <p>No hay productos en el carrito</p>
-
-                <button id="show-products">Ver productos</button>
-
-                <div id="products-container">
-
-                </div>
-
-                <button id="hide-products">Ocultar productos</button>
-
             </div>
 
+            <div id="cart-footer" style="margin-top: auto; border-top: 1px solid #ddd; padding-top: 20px;">
+                <div id="total" style="margin-bottom: 10px; font-weight: bold; font-size: 1.1rem;">
+                    <p>Total: $0.00</p>
+                </div>
+                <button id="purchase"
+                    style="width: 100%; padding: 10px; background: var(--secondary-color); color: white; border: none; border-radius: 5px; cursor: pointer;">Comprar</button>
+            </div>
         </aside>
 
 
@@ -238,6 +117,27 @@
 
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Bienvenido a ShopMayta</h2>
+            <p>Por favor, regístrate para continuar con tu compra.</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Nombre Completo:</label>
+                    <input type="text" id="username" required placeholder="Ej: Juan Pérez">
+                </div>
+                <div class="form-group">
+                    <label for="usercontact">WhatsApp o Email:</label>
+                    <input type="text" id="usercontact" required placeholder="Ej: 0991234567">
+                </div>
+                <button type="submit" class="btn-primary">Guardar y Continuar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js?v=2"></script>
 </body>
-</html> 
+
+</html>
